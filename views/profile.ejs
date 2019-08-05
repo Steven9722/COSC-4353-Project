@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Fuel Pricing Profile</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+    </head>
+
+    <body>
+        <div class ="container">
+            <h1>Fuel Rate Predictor</h1>
+            <% include partials/nav.ejs %> <!--ADD THIS TO OTHERS-->
+            <div class="jumbotron">
+                <h3><%= userProfile.username %>'s Profile</h3>
+                <form id="profileForm" method="POST" action="/profile">
+                    <div class="form-group">
+                        <label for="nameInput">Full Name</label>
+                        <input type="text" class="form-control" name="nameInput" value="<%= userProfile.nameInput %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address1Input">Address 1</label>
+                        <input type="text" class="form-control" name="address1Input" value="<%= userProfile.address1Input %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address2Input">Address 2</label>
+                        <input type="text" class="form-control" name="address2Input" value="<%= userProfile.address2Input %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cityInput">City</label>
+                        <input type="text" class="form-control" name="cityInput" value="<%= userProfile.cityInput %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stateInput">State</label>
+                        <select name="stateInput" class="form-control" required><!--Make this auto fill from DB later-->
+                            <option value="AL" <% if("AL" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >AL</option>
+                            <option value="AK" <% if("AK" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >AK</option>
+                            <option value="AR" <% if("AR" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >AR</option>	
+                            <option value="AZ" <% if("AZ" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >AZ</option>
+                            <option value="CA" <% if("CA" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >CA</option>
+                            <option value="CO" <% if("CO" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >CO</option>
+                            <option value="CT" <% if("CT" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >CT</option>
+                            <option value="DC" <% if("DC" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >DC</option>
+                            <option value="DE" <% if("DE" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >DE</option>
+                            <option value="FL" <% if("FL" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >FL</option>
+                            <option value="GA" <% if("GA" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >GA</option>
+                            <option value="HI" <% if("HI" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >HI</option>
+                            <option value="IA" <% if("IA" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >IA</option>	
+                            <option value="ID" <% if("ID" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >ID</option>
+                            <option value="IL" <% if("IL" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >IL</option>
+                            <option value="IN" <% if("IN" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >IN</option>
+                            <option value="KS" <% if("KS" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >KS</option>
+                            <option value="KY" <% if("KY" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >KY</option>
+                            <option value="LA" <% if("LA" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >LA</option>
+                            <option value="MA" <% if("MA" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >MA</option>
+                            <option value="MD" <% if("MD" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >MD</option>
+                            <option value="ME" <% if("ME" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >ME</option>
+                            <option value="MI" <% if("MI" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >MI</option>
+                            <option value="MN" <% if("MN" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >MN</option>
+                            <option value="MO" <% if("MO" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >MO</option>	
+                            <option value="MS" <% if("MS" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >MS</option>
+                            <option value="MT" <% if("MT" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >MT</option>
+                            <option value="NC" <% if("NC" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >NC</option>	
+                            <option value="NE" <% if("NE" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >NE</option>
+                            <option value="NH" <% if("NH" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >NH</option>
+                            <option value="NJ" <% if("NJ" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >NJ</option>
+                            <option value="NM" <% if("NM" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >NM</option>			
+                            <option value="NV" <% if("NV" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >NV</option>
+                            <option value="NY" <% if("NY" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >NY</option>
+                            <option value="ND" <% if("ND" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >ND</option>
+                            <option value="OH" <% if("OH" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >OH</option>
+                            <option value="OK" <% if("OK" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >OK</option>
+                            <option value="OR" <% if("OR" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >OR</option>
+                            <option value="PA" <% if("PA" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >PA</option>
+                            <option value="RI" <% if("RI" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >RI</option>
+                            <option value="SC" <% if("SC" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >SC</option>
+                            <option value="SD" <% if("SD" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >SD</option>
+                            <option value="TN" <% if("TN" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >TN</option>
+                            <option value="TX" <% if("TX" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >TX</option>
+                            <option value="UT" <% if("UT" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >UT</option>
+                            <option value="VT" <% if("VT" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >VT</option>
+                            <option value="VA" <% if("VA" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >VA</option>
+                            <option value="WA" <% if("WA" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >WA</option>
+                            <option value="WI" <% if("WI" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >WI</option>	
+                            <option value="WV" <% if("WV" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >WV</option>
+                            <option value="WY" <% if("WY" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >WY</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipcodeInput">Zipcode</label>
+                        <input type="text" class="form-control" name="zipcodeInput" value="<%= userProfile.zipcodeInput %>" required>
+                    </div>
+                    <button type="button" class="btn btn-primary">Save Profile</button>
+                </form>
+            </div>
+            <div class="footer">
+                <p>Steven Rubio - Amanjit Singh</p>
+            </div>
+        </div>
+        <!-- Bootstrap CDN adn dependencies -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <!-- My JavaScript -->
+        <script src="/assets/profile.js"></script>
+    </body>
+</html>

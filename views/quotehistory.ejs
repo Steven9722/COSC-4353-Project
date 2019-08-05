@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Fuel Pricing Quote History</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+    </head>
+
+    <body onload="listQuotes()">
+        <div class ="container">
+            <h1>Fuel Rate Predictor</h1>
+            <% include partials/nav.ejs %> <!--ADD THIS TO OTHERS-->
+            <div class="jumbotron">
+                <div id="newQuote">
+                    <div class="row">
+                        <div class="col">
+
+                        </div>
+                        <div class="col"># of Gallons</div>
+                        <div class="col">Delivery Date</div>
+                        <div class="col">Address 1</div>
+                        <div class="col">Address 2</div>
+                        <div class="col">Suggested Amount</div>
+                        <div class="col">Total Cost</div></div>
+                        <% for(let i=0; i < quotes.length; i++) { %>
+                            <div class="row">
+                                    <div class="col">Quote <%= quotes[i].quoteNum %>: </div>
+                                    <div class="col"><%= quotes[i].numGallons %></div>
+                                    <div class="col"><%= quotes[i].deliveryDate %></div>
+                                    <div class="col"><%= quotes[i].addr1 %></div>
+                                    <div class="col"><%= quotes[i].addr2 %></div>
+                                    <div class="col"><%= quotes[i].suggAmt %></div>
+                                    <div class="col"><%= quotes[i].totalCost %></div>
+                            </div>
+                        <% } %>
+                 </div>
+            </div>
+            <div class="footer">
+                <p>Steven Rubio - Amanjit Singh</p>
+            </div>
+        </div>
+        <!-- Bootstrap CDN adn dependencies -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <!-- My JavaScript -->
+        
+    </body>
+</html>

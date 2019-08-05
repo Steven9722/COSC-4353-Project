@@ -1,0 +1,1 @@
+https://cloud.mongodb.com/v2/5d4772ebd5ec13757ae744cd#security/network/whitelist

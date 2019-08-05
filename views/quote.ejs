@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Fuel Pricing Quote</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+    </head>
+
+    <body>
+        <div class ="container">
+            <h1>Fuel Rate Predictor</h1>
+            <% include partials/nav.ejs %> <!--ADD THIS TO OTHERS-->
+            <div class="jumbotron">
+                <h3>Fuel Quote</h3>
+                <form id="quoteRequestForm" method="POST" action="/quote">
+                    <div class="form-group">
+                        <label for="gallonsInput"># of Gallons</label>
+                        <input type="number" class="form-control" id="gallonsInput" name="gallonsInput" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryDateInput">Delivery Date</label>
+                        <input type="date" class="form-control" id="deliveryDateInput" name="deliveryDateInput" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryAddr">Delivery Address</label>
+                        <input type="text" class="form-control" name="deliveryAddr" value="<%= addr1 %>" readonly><!--AUTO FILL AND DONT ALLOW CHANGING-->
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryAddr2">Delivery Address 2</label>
+                        <input type="text" class="form-control" name="deliveryAddr2" name="deliveryAddr2" value="<%= addr2 %>" readonly><!--AUTO FILL AND DONT ALLOW CHANGING-->
+                    </div>
+                    <div class="form-group">
+                        <label for="suggPrice">Suggested Price</label>
+                        <input type="text" class="form-control" id="suggPrice" name="suggPrice" readonly><!--AUTO FILL AND DONT ALLOW CHANGING-->
+                    </div>
+                    <div class="form-group">
+                        <label for="totalAmt">Total Amount</label>
+                        <input type="text" class="form-control" id="totalAmt" name="totalAmt" readonly><!--AUTO FILL AND DONT ALLOW CHANGING-->
+                    </div>
+                    <button type="button" id="getPrices" class="btn btn-primary" disabled="disabled">Get Prices</button>
+                    <input type="submit" id="getQuote" class="btn btn-primary" value="Get Quote" disabled="disabled"/>
+                </form>
+            </div>
+            <div class="footer">
+                <p>Steven Rubio - Amanjit Singh</p>
+            </div>
+        </div>
+        <!-- Bootstrap CDN adn dependencies -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <!-- My JavaScript -->
+        <script src="/assets/main.js"></script>
+    </body>
+</html>
