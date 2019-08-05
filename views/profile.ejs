@@ -12,29 +12,29 @@
     <body>
         <div class ="container">
             <h1>Fuel Rate Predictor</h1>
-            <% include partials/nav.ejs %> <!--ADD THIS TO OTHERS-->
+            <% include partials/nav.ejs %>
             <div class="jumbotron">
                 <h3><%= userProfile.username %>'s Profile</h3>
                 <form id="profileForm" method="POST" action="/profile">
                     <div class="form-group">
                         <label for="nameInput">Full Name</label>
-                        <input type="text" class="form-control" name="nameInput" value="<%= userProfile.nameInput %>" required>
+                        <input type="text" class="form-control" name="nameInput" value="<%= userProfile.nameInput %>" maxlength="50" required>
                     </div>
                     <div class="form-group">
                         <label for="address1Input">Address 1</label>
-                        <input type="text" class="form-control" name="address1Input" value="<%= userProfile.address1Input %>" required>
+                        <input type="text" class="form-control" name="address1Input" value="<%= userProfile.address1Input %>" maxlength="100" required>
                     </div>
                     <div class="form-group">
                         <label for="address2Input">Address 2</label>
-                        <input type="text" class="form-control" name="address2Input" value="<%= userProfile.address2Input %>" required>
+                        <input type="text" class="form-control" name="address2Input" value="<%= userProfile.address2Input %>" maxlength="100">
                     </div>
                     <div class="form-group">
                         <label for="cityInput">City</label>
-                        <input type="text" class="form-control" name="cityInput" value="<%= userProfile.cityInput %>" required>
+                        <input type="text" class="form-control" name="cityInput" value="<%= userProfile.cityInput %>" maxlength="100" required>
                     </div>
                     <div class="form-group">
                         <label for="stateInput">State</label>
-                        <select name="stateInput" class="form-control" required><!--Make this auto fill from DB later-->
+                        <select name="stateInput" class="form-control" required>
                             <option value="AL" <% if("AL" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >AL</option>
                             <option value="AK" <% if("AK" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >AK</option>
                             <option value="AR" <% if("AR" === userProfile.stateInput) { %> <%= 'selected' %> <% } %> >AR</option>	
@@ -90,9 +90,9 @@
                     </div>
                     <div class="form-group">
                         <label for="zipcodeInput">Zipcode</label>
-                        <input type="text" class="form-control" name="zipcodeInput" value="<%= userProfile.zipcodeInput %>" required>
+                        <input type="text" class="form-control" name="zipcodeInput" value="<%= userProfile.zipcodeInput %>" minlength="5" maxlength="9" required>
                     </div>
-                    <button type="button" class="btn btn-primary">Save Profile</button>
+                    <input type="submit" class="btn btn-primary" value="Save Profile"/>
                 </form>
             </div>
             <div class="footer">

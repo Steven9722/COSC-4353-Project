@@ -140,12 +140,19 @@ app.post('/', urlencodedParser, function (req, res) {
 
 app.post('/register', urlencodedParser, function (req, res) {
     sess = req.session;
-    let newUser = User({usernameInput: req.body.usernameInput, 
-                        passwordInput: req.body.passwordInput}).save(function(err) {
-        if(err) throw err;
+    User.findOne({ usernameInput: req.body.usernameInput }, function (err, userInfo){
+        if(userInfo) {
+            res.render('registerfail');
+        }
+        else {
+            let newUser = User({usernameInput: req.body.usernameInput, 
+                passwordInput: req.body.passwordInput}).save(function(err) {
+                if(err) throw err;
+            });
+            initUserProfile(req.body.usernameInput);
+            res.render('index', {loginSuccess: true, registerSuccess: true});
+        }
     });
-    initUserProfile(req.body.usernameInput);
-    res.render('index', {loginSuccess: true, registerSuccess: true});
 });
 
 app.post('/profile', urlencodedParser, function (req, res) {
@@ -255,14 +262,6 @@ function initUserProfile(username) {
     });
 }
 
-
-function findIndex(searchArray, searchUser) {
-    for(let i = 0; i < userProfiles.length; i++) {
-        if(userProfiles[i].username === searchUser) {
-            return i;
-        }
-    }
-}
 
 function updateProfile(newProfile, username) {
     Profile.findOne({ username: username }, function (err, userProfile){

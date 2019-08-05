@@ -1,5 +1,7 @@
 $(document).ready(function (){
-    $('button').on('click', function(){
+
+    $('form[id=profileForm]').submit(function(e) {
+        e.preventDefault();
         var nameInput = $('form[id=profileForm]').find('input[name=nameInput]').val();
         var address1Input = $('form[id=profileForm]').find('input[name=address1Input]').val();
         var address2Input = $('form[id=profileForm]').find('input[name=address2Input]').val();
