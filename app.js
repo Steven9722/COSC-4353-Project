@@ -10,7 +10,7 @@ let userSchema = new mongoose.Schema({
 });
 let User = mongoose.model('Users', userSchema);
 let profileSchema = new mongoose.Schema({
-    username: String, 
+    username: String,
     nameInput: String, 
     address1Input: String, 
     address2Input: String, 
